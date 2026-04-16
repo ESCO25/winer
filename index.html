@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌾 سحوبات سلام - Salam Giveaway</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --wood-dark:#3D1F0A;--wood-med:#6B3A1F;--wood-light:#C8813A;--wood-plank:#A06428;
+  --hay-gold:#FFD700;--hay-gold2:#F5B800;--hay-gold3:#E8A000;
+  --grass-dark:#3D6B1A;--grass-med:#5A8A3C;--grass-light:#7AB648;--grass-bright:#A8D05A;
+  --sky-top:#4A9FD4;--sky-bot:#87CEEB;
+  --stone:#C8BEA8;--stone-dark:#8A7A6A;
+  --cream:#FFF8E7;--parchment:#F5DEB3;--parchment2:#EDD090;
+  --orange:#E8740C;--orange2:#F5950A;
+  --red:#C0392B;--red2:#E74C3C;
+  --green-btn:#5A9E1A;--green-btn2:#7AC030;
+  --brown-text:#3D2B1F;--light-text:#FFF8E7;
+}
+html{height:100%}
+body{
+  font-family:'Cairo',sans-serif;
+  background: url('https://i.imgur.com/NO67yFT.jpeg') center/cover no-repeat fixed;
+  min-height:100vh;direction:rtl;overflow-x:hidden;position:relative;
+}
+
+/* ====== BACKGROUND SCENE ====== */
+.bg-scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sun{
+  position:absolute;top:25px;left:80px;
+  width:90px;height:90px;
+  background:radial-gradient(circle,#FFF176 30%,#FFD700 60%,rgba(255,200,0,0) 100%);
+  border-radius:50%;
+  animation:sunPulse 5s ease-in-out infinite;
+  box-shadow:0 0 60px 20px rgba(255,200,0,0.35);
+}
+@keyframes sunPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sun-ray{position:absolute;top:50%;left:50%;width:6px;height:34px;background:rgba(255,220,0,0.5);border-radius:3px;transform-origin:3px -10px;animation:rayRotate 10s linear infinite}
+@keyframes rayRotate{from{transform:rotate(0deg) translateY(-50px)}to{transform:rotate(360deg) translateY(-50px)}}
+.cloud{position:absolute;opacity:0.85}
+.cloud svg path{fill:#fff}
+.cloud1{top:40px;right:120px;animation:cloudFloat 18s ease-in-out infinite}
+.cloud2{top:80px;right:380px;animation:cloudFloat 24s ease-in-out infinite reverse;transform:scale(0.7)}
+@keyframes cloudFloat{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}
+.hill1{position:absolute;bottom:0;left:-10%;width:60%;height:220px;background:linear-gradient(180deg,var(--grass-light) 0%,var(--grass-dark) 100%);border-radius:50% 50% 0 0;opacity:0.4}
+.hill2{position:absolute;bottom:0;right:-10%;width:55%;height:180px;background:linear-gradient(180deg,var(--grass-med) 0%,var(--grass-dark) 100%);border-radius:50% 50% 0 0;opacity:0.4}
+.fence{position:absolute;bottom:10px;left:0;right:0;height:80px;display:flex;gap:0;overflow:hidden;opacity:0.85}
+.fence-post{width:18px;height:60px;background:linear-gradient(90deg,#C8813A,#A06428);border:2px solid var(--wood-dark);border-radius:4px 4px 0 0;margin-left:28px;flex-shrink:0;position:relative;top:10px}
+.fence-rail{position:absolute;left:0;right:0;height:12px;background:linear-gradient(90deg,#D4943A,#B8762E);border-top:2px solid var(--wood-dark);border-bottom:2px solid var(--wood-dark)}
+.fence-rail.top{bottom:50px}.fence-rail.bot{bottom:28px}
+
+/* ====== HEADER ====== */
+header{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:22px 16px 12px}
+.sign-pole{width:16px;height:50px;background:linear-gradient(90deg,var(--wood-light),var(--wood-plank));border:3px solid var(--wood-dark);border-radius:4px;margin:0 auto}
+.header-sign{
+  background:linear-gradient(180deg,#D4943A 0%,#C07820 30%,#A06010 100%);
+  border:6px solid var(--wood-dark);border-radius:18px;
+  padding:16px 48px;
+  box-shadow:0 10px 0 var(--wood-dark),0 14px 30px rgba(0,0,0,0.45),inset 0 2px 0 rgba(255,255,255,0.2);
+  position:relative;text-align:center;
+}
+.header-sign::before{content:'';position:absolute;inset:6px;border:2px solid rgba(255,220,100,0.25);border-radius:12px;pointer-events:none}
+.site-title{
+  font-family:'Luckiest Guy',cursive;
+  font-size:clamp(30px,6vw,52px);
+  color:var(--hay-gold);
+  text-shadow:3px 3px 0 #8B5520,6px 6px 0 #5C3A1E,9px 9px 0 #3A2010,0 0 20px rgba(255,200,0,0.4);
+  letter-spacing:2px;line-height:1.1
+}
+.site-sub{font-size:14px;color:var(--parchment);font-weight:700;margin-top:4px;text-shadow:1px 1px 2px rgba(0,0,0,0.7);letter-spacing:1px}
+.star-deco{display:flex;gap:8px;justify-content:center;margin-top:6px}
+.star-deco span{font-size:18px;animation:starSpin 4s linear infinite}
+.star-deco span:nth-child(2){animation-delay:.5s}.star-deco span:nth-child(3){animation-delay:1s}
+@keyframes starSpin{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.2) rotate(20deg)}}
+
+/* ====== MAIN LAYOUT ====== */
+.main-wrap{
+  position:relative;z-index:10;
+  max-width:1220px;margin:0 auto;
+  padding:0 14px 40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:22px;
+}
+@media(max-width:900px){.main-wrap{grid-template-columns:1fr}}
+
+/* ====== WOOD CARD ====== */
+.wood-card{
+  background:linear-gradient(180deg,#D4943A 0%,#B87830 50%,#A06420 100%);
+  border:5px solid var(--wood-dark);border-radius:20px;
+  padding:0;overflow:hidden;
+  box-shadow:0 10px 0 var(--wood-dark),0 14px 25px rgba(0,0,0,0.4);
+  position:relative;
+}
+.wood-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,0.18);border-radius:16px 16px 0 0}
+.card-header{
+  background:linear-gradient(180deg,#C07020 0%,#A05C10 100%);
+  border-bottom:4px solid var(--wood-dark);
+  padding:12px 18px;display:flex;align-items:center;gap:10px;
+}
+.card-header-title{
+  font-family:'Luckiest Guy',cursive;
+  font-size:clamp(16px,3vw,22px);color:var(--hay-gold);
+  text-shadow:2px 2px 0 #8B5520,4px 4px 0 #5C3A1E,6px 6px 0 rgba(0,0,0,0.3);
+  letter-spacing:1px
+}
+.card-icon{font-size:26px;filter:drop-shadow(2px 2px 3px rgba(0,0,0,0.5))}
+.card-body{padding:16px}
+
+/* ====== PARCHMENT ====== */
+.parchment{
+  background:linear-gradient(160deg,var(--cream) 0%,var(--parchment) 100%);
+  border:3px solid var(--wood-plank);border-radius:12px;
+  padding:14px;margin-bottom:14px;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,0.1);
+  position:relative;
+}
+.parchment::after{content:'';position:absolute;inset:4px;border:1px dashed rgba(160,100,40,0.3);border-radius:8px;pointer-events:none}
+
+/* ====== LABELS & INPUTS ====== */
+.field-label{
+  font-size:13px;font-weight:900;color:var(--wood-med);
+  text-shadow:1px 1px 0 rgba(255,255,255,0.5);
+  margin-bottom:6px;display:block;letter-spacing:.5px
+}
+.hay-input{
+  width:100%;background:var(--cream);
+  border:3px solid var(--wood-plank);border-radius:10px;
+  padding:10px 14px;font-family:'Cairo';font-size:14px;
+  color:var(--brown-text);font-weight:700;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);
+  transition:border-color .2s,box-shadow .2s;
+}
+.hay-input:focus{outline:none;border-color:var(--grass-light);box-shadow:inset 0 2px 4px rgba(0,0,0,0.1),0 0 0 3px rgba(90,138,60,0.25)}
+
+/* ====== BUTTONS ====== */
+.btn{
+  cursor:pointer;font-family:'Luckiest Guy',cursive;border:none;
+  border-radius:14px;padding:11px 20px;
+  letter-spacing:.5px;transition:transform .1s,box-shadow .1s;
+  position:relative;overflow:hidden;
+}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.15) 0%,transparent 50%);border-radius:12px;pointer-events:none}
+.btn:active{transform:translateY(3px)}
+.btn-green{
+  background:linear-gradient(180deg,#8FCE3A 0%,var(--green-btn) 100%);
+  color:#fff;font-size:15px;
+  border-bottom:5px solid #2A5A08;
+  text-shadow:1px 2px 0 #2A5A08,0 0 10px rgba(0,0,0,0.2);
+  box-shadow:0 6px 0 #2A5A08,0 8px 15px rgba(0,0,0,0.3);
+}
+.btn-green:active{box-shadow:0 2px 0 #2A5A08;border-bottom-width:2px}
+.btn-orange{
+  background:linear-gradient(180deg,#F5A830 0%,var(--orange) 100%);
+  color:#fff;font-size:15px;
+  border-bottom:5px solid #7A3000;
+  text-shadow:1px 2px 0 #7A3000;
+  box-shadow:0 6px 0 #7A3000,0 8px 15px rgba(0,0,0,0.3);
+}
+.btn-orange:active{box-shadow:0 2px 0 #7A3000;border-bottom-width:2px}
+.btn-red{
+  background:linear-gradient(180deg,#E8604A 0%,var(--red) 100%);
+  color:#fff;font-size:13px;
+  border-bottom:4px solid #7A1A10;
+  text-shadow:1px 1px 0 #7A1A10;
+  box-shadow:0 4px 0 #7A1A10,0 6px 12px rgba(0,0,0,0.3);
+}
+.btn-red:active{box-shadow:0 1px 0 #7A1A10;border-bottom-width:1px}
+.btn-blue{
+  background:linear-gradient(180deg,#5BA8E0 0%,#2A7AB8 100%);
+  color:#fff;font-size:13px;
+  border-bottom:4px solid #0A4A80;
+  text-shadow:1px 1px 0 #0A4A80;
+  box-shadow:0 4px 0 #0A4A80,0 6px 12px rgba(0,0,0,0.3);
+}
+.btn-blue:active{box-shadow:0 1px 0 #0A4A80;border-bottom-width:1px}
+.btn-gold{
+  background:linear-gradient(180deg,#FFE040 0%,var(--hay-gold2) 50%,var(--hay-gold3) 100%);
+  color:var(--wood-dark);font-size:22px;width:100%;padding:15px;
+  border-bottom:6px solid #8B5520;
+  text-shadow:2px 2px 0 rgba(255,255,255,0.4),0 0 20px rgba(255,200,0,0.5);
+  box-shadow:0 8px 0 #8B5520,0 12px 25px rgba(0,0,0,0.4);
+  animation:goldPulse 2s ease-in-out infinite;
+}
+.btn-gold:active{box-shadow:0 2px 0 #8B5520;border-bottom-width:2px;transform:translateY(6px)}
+@keyframes goldPulse{0%,100%{box-shadow:0 8px 0 #8B5520,0 12px 25px rgba(0,0,0,0.4),0 0 0 rgba(255,200,0,0)}50%{box-shadow:0 8px 0 #8B5520,0 12px 25px rgba(0,0,0,0.4),0 0 20px rgba(255,200,0,0.3)}}
+
+/* ====== WHEEL POINTER ANIMATION ====== */
+.wheel-pointer{
+  position:absolute;left:50%;
+  top:50%;transform:translate(160px,-50%);
+  width:0;height:0;
+  border-top:18px solid transparent;
+  border-bottom:18px solid transparent;
+  border-right:36px solid var(--hay-gold);
+  filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  z-index:5;
+  transition:transform .08s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+.wheel-pointer.spinning{
+  animation: pointerWobble 90ms linear infinite;
+}
+@keyframes pointerWobble{
+  0%,100%{transform:translate(160px,-50%) rotate(0deg)}
+  25%{transform:translate(160px,-50%) rotate(12deg)}
+  75%{transform:translate(160px,-50%) rotate(-12deg)}
+}
+
+/* ====== CANVAS & WHEEL ====== */
+canvas#wheel-canvas{
+  border-radius:50%;
+  border:12px solid var(--wood-dark);
+  box-shadow:0 0 0 6px var(--wood-light),0 0 0 10px var(--wood-dark),
+             0 15px 40px rgba(0,0,0,0.5),inset 0 0 30px rgba(0,0,0,0.2);
+  cursor:pointer;
+}
+.wheel-section{display:flex;flex-direction:column;gap:18px}
+.wheel-outer{
+  display:flex;justify-content:center;align-items:center;
+  position:relative;padding:10px;
+}
+
+/* ====== HISTORY SECTION ====== */
+.history-list{
+  max-height:180px;overflow-y:auto;background:rgba(160,100,40,0.1);
+  border:2px solid rgba(160,100,40,0.3);border-radius:12px;padding:10px;
+}
+.history-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 12px;margin-bottom:6px;background:var(--cream);
+  border-radius:8px;font-size:13px;border:1px solid var(--wood-plank);
+}
+.history-item:last-child{margin-bottom:0}
+
+/* ====== TABS & STATUS & VIDEOS ====== */
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tab{
+  padding:9px 16px;border-radius:10px 10px 0 0;cursor:pointer;
+  font-family:'Luckiest Guy',cursive;font-size:14px;letter-spacing:.5px;
+  background:linear-gradient(180deg,#B87030 0%,#9A5A20 100%);
+  color:var(--parchment);border:3px solid var(--wood-dark);border-bottom:none;
+  text-shadow:1px 1px 0 var(--wood-dark);
+  transition:all .2s;
+}
+.tab.active{
+  background:linear-gradient(180deg,var(--cream) 0%,var(--parchment) 100%);
+  color:var(--wood-dark);
+  text-shadow:1px 1px 0 rgba(255,255,255,0.5);
+  z-index:2;position:relative;
+}
+.sect{display:none}.sect.active{display:block}
+.tab-content{
+  background:linear-gradient(160deg,var(--cream) 0%,var(--parchment) 100%);
+  border:3px solid var(--wood-dark);border-radius:0 12px 12px 12px;padding:14px;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,0.1);
+}
+.status{padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;margin-top:10px;display:none;border:3px solid}
+.status.ok{display:block;background:#E8F5E9;color:#2E7D32;border-color:#81C784;text-shadow:1px 1px 0 rgba(255,255,255,0.5)}
+.status.err{display:block;background:#FFEBEE;color:#C62828;border-color:#E57373;text-shadow:1px 1px 0 rgba(255,255,255,0.5)}
+.status.info{display:block;background:#E3F2FD;color:#1565C0;border-color:#64B5F6;text-shadow:1px 1px 0 rgba(255,255,255,0.5)}
+.videos-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:10px;max-height:310px;overflow-y:auto;margin-top:10px;
+  padding-right:4px;
+}
+.video-card{
+  background:var(--cream);border:3px solid var(--wood-plank);
+  border-radius:12px;cursor:pointer;overflow:hidden;
+  transition:all .2s;
+  box-shadow:0 4px 0 var(--wood-dark),0 6px 12px rgba(0,0,0,0.2);
+}
+.video-card:hover{transform:translateY(-3px);border-color:var(--grass-light);box-shadow:0 7px 0 var(--grass-dark),0 10px 16px rgba(0,0,0,0.25)}
+.video-card.selected{border-color:var(--grass-light);box-shadow:0 4px 0 var(--grass-dark),0 0 15px rgba(120,200,60,0.4)}
+.video-thumb{width:100%;height:90px;object-fit:cover}
+.video-title{font-size:11px;padding:7px 8px;font-weight:700;color:var(--brown-text);line-height:1.3}
+.video-stats{
+  font-size:10px;color:var(--wood-med);margin-top:2px;display:flex;gap:12px;
+}
+.plist{max-height:200px;overflow-y:auto;background:rgba(160,100,40,0.1);border-radius:10px;padding:8px;border:2px solid rgba(160,100,40,0.2)}
+.pitem{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 10px;border-radius:8px;font-size:13px;font-weight:700;
+  color:var(--brown-text);border-bottom:1px solid rgba(160,100,40,0.2);
+  transition:background .15s;
+}
+.pitem:hover{background:rgba(160,100,40,0.1)}
+.pitem-num{color:var(--wood-plank);min-width:22px;font-size:12px}
+.pitem-del{cursor:pointer;color:var(--red2);font-size:16px;transition:transform .15s}
+.pitem-del:hover{transform:scale(1.3)}
+.count-badge{
+  display:inline-block;background:linear-gradient(180deg,#8FCE3A,var(--green-btn));
+  color:#fff;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:900;
+  border:2px solid #2A5A08;
+  text-shadow:1px 1px 0 #2A5A08;
+  box-shadow:0 3px 0 #2A5A08;
+}
+.wheel-names-preview{
+  background:rgba(160,100,40,0.1);border:2px solid rgba(160,100,40,0.25);
+  border-radius:10px;padding:8px;max-height:120px;overflow-y:auto;margin-top:8px
+}
+.wname-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--cream);border:2px solid var(--wood-plank);border-radius:20px;
+  padding:4px 10px;font-size:12px;font-weight:700;color:var(--brown-text);
+  margin:3px;
+}
+.wname-del{cursor:pointer;color:var(--red2);font-weight:900;font-size:14px;line-height:1;transition:transform .1s}
+.wname-del:hover{transform:scale(1.3)}
+.winner-popup{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;align-items:center;
+  flex-direction:column;
+  animation:fadeIn .4s ease
+}
+.winner-popup.show{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.winner-card{
+  background:linear-gradient(180deg,#D4943A 0%,#A06420 100%);
+  border:8px solid var(--wood-dark);border-radius:24px;
+  padding:30px 50px;text-align:center;
+  box-shadow:0 20px 0 var(--wood-dark),0 30px 60px rgba(0,0,0,0.6),inset 0 3px 0 rgba(255,255,255,0.2);
+  animation:winnerBounce .6s cubic-bezier(0.34,1.56,0.64,1) both;
+  max-width:480px;width:90%;
+}
+@keyframes winnerBounce{from{transform:scale(0.3) rotate(-10deg);opacity:0}to{transform:scale(1) rotate(0deg);opacity:1}}
+.winner-trophy{font-size:70px;animation:trophySpin 1s ease both .3s;display:block}
+@keyframes trophySpin{from{transform:scale(0) rotate(-180deg)}to{transform:scale(1) rotate(0)}}
+.winner-label-text{
+  font-family:'Luckiest Guy',cursive;font-size:20px;
+  color:var(--parchment);
+  text-shadow:2px 2px 0 var(--wood-dark),4px 4px 0 rgba(0,0,0,0.3);
+  margin:10px 0 6px;letter-spacing:1px
+}
+.winner-name-text{
+  font-family:'Luckiest Guy',cursive;
+  font-size:clamp(22px,5vw,36px);
+  color:var(--hay-gold);
+  text-shadow:3px 3px 0 #8B5520,6px 6px 0 #5C3A1E,9px 9px 0 rgba(0,0,0,0.3),0 0 30px rgba(255,200,0,0.5);
+  word-break:break-all;margin-bottom:18px;line-height:1.2;cursor:pointer;
+}
+.winner-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;animation:confettiFall 3s ease-in forwards;z-index:105}
+@keyframes confettiFall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:1}
+  100%{transform:translateY(100vh) rotate(720deg);opacity:0}
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND SCENE -->
+<div class="bg-scene">
+  <div class="sun">
+    <div class="sun-ray" style="transform:rotate(0deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(45deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(90deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(135deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(180deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(225deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(270deg) translateY(-50px)"></div>
+    <div class="sun-ray" style="transform:rotate(315deg) translateY(-50px)"></div>
+  </div>
+  <div class="cloud cloud1">
+    <svg width="120" height="60" viewBox="0 0 120 60"><path d="M20 50 Q10 50 10 40 Q10 28 22 28 Q24 15 38 15 Q48 8 58 18 Q65 10 76 14 Q90 14 90 26 Q100 26 100 36 Q100 50 88 50 Z"/></svg>
+  </div>
+  <div class="cloud cloud2">
+    <svg width="100" height="50" viewBox="0 0 100 50"><path d="M18 42 Q8 42 8 33 Q8 22 20 22 Q22 12 34 12 Q42 6 52 14 Q58 8 68 11 Q80 11 80 22 Q88 22 88 30 Q88 42 76 42 Z"/></svg>
+  </div>
+  <div class="hill1"></div>
+  <div class="hill2"></div>
+  <div class="fence">
+    <div class="fence-rail top"></div>
+    <div class="fence-rail bot"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+    <div class="fence-post"></div><div class="fence-post"></div><div class="fence-post"></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="sign-pole"></div>
+  <div class="header-sign">
+    <div class="site-title">🌾 سحوبات سلام 🌾</div>
+    <div class="site-sub">Salam.Games04 — YouTube Giveaway</div>
+    <div class="star-deco"><span>⭐</span><span>🏆</span><span>⭐</span></div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- RIGHT COLUMN: WHEEL + HISTORY -->
+  <div>
+    <div class="wood-card">
+      <div class="card-header">
+        <span class="card-icon">🎡</span>
+        <span class="card-header-title">عجلة الحظ</span>
+      </div>
+      <div class="card-body wheel-section">
+        <div>
+          <div class="sec-title">✏️ أضف أسماء للعجلة:</div>
+          <div class="name-add-row">
+            <input type="text" class="hay-input" id="nameInput" placeholder="اكتب اسماً..." style="flex:1" onkeydown="if(event.key==='Enter')addWheelName()">
+            <button class="btn btn-green" onclick="addWheelName()">+ أضف</button>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:6px">
+            <button class="btn btn-orange" style="flex:1;font-size:13px" onclick="addFromComments()">من التعليقات ⬇️</button>
+            <button class="btn btn-red" style="font-size:12px" onclick="clearWheelNames()">مسح الكل</button>
+          </div>
+          <div class="parchment" style="margin-top:12px">
+            <div class="sec-title">🎟️ عدد الفائزين:</div>
+            <input type="number" id="numWinnersInput" value="1" min="1" max="20" class="hay-input" style="text-align:center;font-size:26px;font-weight:900">
+            <button class="btn btn-orange" style="width:100%;margin-top:10px;font-size:14px" onclick="drawMultipleWinners()">🎟️ سحب متعدد عشوائي (بدون عجلة)</button>
+          </div>
+          <div class="wheel-names-preview" id="wheelNamesPreview">
+            <div style="color:rgba(100,60,20,0.5);text-align:center;font-size:13px;padding:8px">لا يوجد أسماء بعد</div>
+          </div>
+        </div>
+
+        <div class="wheel-outer">
+          <canvas id="wheel-canvas" width="340" height="340"></canvas>
+          <div class="wheel-pointer" id="wheelPointer"></div>
+        </div>
+
+        <button class="btn btn-gold" onclick="spinWheel()" id="spinBtn">🎰 دوّر العجلة!</button>
+
+        <!-- سجل الفائزين الجديد -->
+        <div class="parchment" style="margin-top:20px">
+          <div class="sec-title" style="display:flex;justify-content:space-between;align-items:center">
+            📜 سجل الفائزين السابقين
+            <button class="btn btn-red" style="font-size:11px;padding:4px 10px" onclick="clearHistory()">مسح السجل</button>
+          </div>
+          <div class="history-list" id="historyList">
+            <div style="color:rgba(100,60,20,0.5);text-align:center;padding:20px;font-size:13px">لم يتم تسجيل أي فائز بعد</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT COLUMN: YOUTUBE + COMMENTS -->
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <!-- YouTube Section -->
+    <div class="wood-card">
+      <div class="card-header">
+        <span class="card-icon">📺</span>
+        <span class="card-header-title">مقاطع القناة (آخر 20)</span>
+      </div>
+      <div class="card-body">
+        <div class="tabs">
+          <div class="tab active" onclick="switchSourceTab('channel')">قناتنا</div>
+          <div class="tab" onclick="switchSourceTab('link')">رابط مقطع</div>
+        </div>
+
+        <div class="tab-content">
+          <div class="sect active" id="channelSect">
+            <button class="btn btn-green" style="width:100%;margin-bottom:8px" onclick="loadChannelVideos()" id="loadVideosBtn">📥 تحميل آخر 20 مقطع + إحصائيات</button>
+            <div id="channelStatus" class="status"></div>
+            <div class="videos-grid" id="videosGrid"></div>
+          </div>
+          <div class="sect" id="linkSect">
+            <label class="field-label">رابط مقطع يوتيوب:</label>
+            <input type="text" class="hay-input" id="videoUrl" placeholder="https://www.youtube.com/watch?v=...">
+            <button class="btn btn-blue" style="margin-top:10px;width:100%" onclick="loadFromUrl()">📥 تحميل من الرابط</button>
+            <div id="urlStatus" class="status"></div>
+          </div>
+        </div>
+
+        <div id="selectedVideoInfo" style="display:none;margin-top:12px">
+          <div class="parchment" style="display:flex;gap:10px;align-items:center">
+            <img id="selThumb" src="" style="width:80px;height:50px;object-fit:cover;border-radius:8px;border:2px solid var(--wood-plank)">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:900;color:var(--brown-text)" id="selTitle"></div>
+              <div style="font-size:11px;color:var(--wood-med);margin-top:3px" id="selId"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="wood-card">
+      <div class="card-header">
+        <span class="card-icon">💬</span>
+        <span class="card-header-title">التعليقات والسحب</span>
+      </div>
+      <div class="card-body">
+        <div class="parchment">
+          <div class="sec-title">🔽 خيارات التصفية:</div>
+          <div class="filter-row">
+            <label class="filter-chip" id="chipNoDup">
+              <input type="checkbox" id="filterDup" checked onchange="updateFilterChip('chipNoDup')">
+              <span>حذف المكرر</span>
+            </label>
+            <label class="filter-chip" id="chipNoReply">
+              <input type="checkbox" id="filterReply" checked onchange="updateFilterChip('chipNoReply')">
+              <span>حذف الردود</span>
+            </label>
+          </div>
+          <div class="filter-row">
+            <label class="field-label" style="margin:0;align-self:center">كلمة مطلوبة:</label>
+            <input type="text" class="hay-input" id="filterWord" placeholder="اختياري..." style="flex:1;padding:7px 10px;font-size:13px">
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <button class="btn btn-orange" style="flex:1" onclick="fetchComments()" id="fetchBtn" disabled>⬇️ جلب التعليقات</button>
+          <button class="btn btn-blue" id="liveBtn" disabled onclick="fetchLiveChat()">📡 سحب من البث المباشر</button>
+        </div>
+        <div id="fetchStatus" class="status"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;flex-wrap:wrap;gap:8px">
+          <span class="count-badge" id="partCount">0 مشارك</span>
+          <button class="btn btn-red" style="font-size:12px" onclick="clearComments()">مسح</button>
+        </div>
+        <div class="plist" id="partList" style="margin-top:10px">
+          <div style="color:rgba(100,60,20,0.5);text-align:center;font-size:13px;padding:10px">لا يوجد تعليقات بعد</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WINNER OVERLAY -->
+<div class="winner-popup" id="winnerPopup">
+  <div class="winner-card">
+    <span class="winner-trophy">🏆</span>
+    <div class="winner-label-text">🎉 مبروك الفائز! 🎉</div>
+    <div class="winner-name-text" id="winnerNameDisplay" onclick="visitWinnerProfile()">—</div>
+    <div class="winner-btns">
+      <button class="btn btn-red" onclick="removeWinnerAndClose()">حذف وإغلاق</button>
+      <button class="btn btn-green" onclick="closeWinner()">إغلاق فقط</button>
+      <button class="btn btn-gold" style="font-size:16px;padding:10px 20px;width:auto" onclick="spinAgain()">🎰 دور آخر!</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== HIDDEN CONFIG ======
+const _c = atob('QUl6YVN5Q1p0Z1RDbF9mTFo0SnVjaE41cDNlZHhUbjktWUlGWmpz');
+const _h = 'Salam.Games04';
+
+// ====== STATE ======
+let selectedVideoId = null;
+let liveChatId = null;
+let participants = [];
+let wheelEntries = [];
+let spinAngle = 0;
+let spinning = false;
+let currentWinner = null;
+let winnersHistory = [];   // ← سجل الفائزين الجديد
+let logoImg = new Image();
+logoImg.src = 'https://i.imgur.com/Owaf8Cs.png';
+
+// ====== INIT ======
+drawWheel();
+updateFilterChip('chipNoDup');
+updateFilterChip('chipNoReply');
+renderHistory();
+
+// ====== TABS & STATUS ======
+function switchSourceTab(t) {
+  document.querySelectorAll('.tabs .tab').forEach((el,i) => el.classList.toggle('active', ['channel','link'][i] === t));
+  document.getElementById('channelSect').classList.toggle('active', t==='channel');
+  document.getElementById('linkSect').classList.toggle('active', t==='link');
+}
+function setStatus(id, type, msg) {
+  const el = document.getElementById(id);
+  el.className = 'status ' + type;
+  el.textContent = msg;
+}
+function updateFilterChip(chipId) {
+  const chip = document.getElementById(chipId);
+  const cb = chip.querySelector('input');
+  chip.classList.toggle('active', cb.checked);
+}
+
+// ====== FIXED: LOAD LAST 20 VIDEOS + LIKES + COMMENTS ======
+async function loadChannelVideos() {
+  const btn = document.getElementById('loadVideosBtn');
+  btn.disabled = true;
+  setStatus('channelStatus','info','⏳ جاري تحميل آخر 20 مقطع + الإحصائيات...');
+  try {
+    // 1. الحصول على قائمة التحميل
+    const r1 = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${_h}&key=${_c}`);
+    const d1 = await r1.json();
+    if (!d1.items?.length) throw new Error('القناة غير موجودة');
+    const upId = d1.items[0].contentDetails.relatedPlaylists.uploads;
+
+    const r2 = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${upId}&maxResults=20&key=${_c}`);
+    const d2 = await r2.json();
+    const items = d2.items || [];
+
+    if (!items.length) {
+      setStatus('channelStatus','err','❌ لا توجد مقاطع');
+      btn.disabled = false;
+      return;
+    }
+
+    // 2. جمع كل Video IDs
+    const videoIds = items.map(v => v.snippet.resourceId.videoId).join(',');
+
+    // 3. جلب الإحصائيات (likes + comments)
+    const rStats = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${_c}`);
+    const dStats = await rStats.json();
+
+    // دمج البيانات
+    const merged = items.map(item => {
+      const vid = item.snippet.resourceId.videoId;
+      const statItem = dStats.items.find(s => s.id === vid);
+      return {
+        id: vid,
+        title: item.snippet.title,
+        thumb: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || '',
+        likes: statItem ? parseInt(statItem.statistics.likeCount || 0).toLocaleString('ar-EG') : '—',
+        comments: statItem ? parseInt(statItem.statistics.commentCount || 0).toLocaleString('ar-EG') : '—'
+      };
+    });
+
+    renderVideos(merged);
+    setStatus('channelStatus','ok',`✅ تم تحميل ${merged.length} مقطع مع الإحصائيات`);
+  } catch(e) {
+    setStatus('channelStatus','err','❌ خطأ: ' + e.message);
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function renderVideos(videos) {
+  const grid = document.getElementById('videosGrid');
+  if (!videos.length) {
+    grid.innerHTML = '<div style="color:rgba(100,60,20,0.5);text-align:center;padding:20px">لا توجد مقاطع</div>';
+    return;
+  }
+  grid.innerHTML = videos.map(v => `
+    <div class="video-card" onclick="selectVideo('${v.id}','${v.thumb.replace(/'/g,"\\'")}','${v.title.replace(/'/g,"\\'").substring(0,60)}')">
+      <img class="video-thumb" src="${v.thumb}" loading="lazy">
+      <div class="video-title">
+        ${v.title.length > 55 ? v.title.substring(0,52)+'…' : v.title}
+        <div class="video-stats">
+          ❤️ ${v.likes} &nbsp;&nbsp; 💬 ${v.comments}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ====== باقي الدوال (loadFromUrl, selectVideo, fetchComments, fetchLiveChat ...) كما هي مع التحسينات السابقة ======
+function extractVideoId(url) {
+  const patterns = [
+    /[?&]v=([a-zA-Z0-9_-]{11})/,
+    /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+    /\/embed\/([a-zA-Z0-9_-]{11})/,
+    /\/shorts\/([a-zA-Z0-9_-]{11})/
+  ];
+  for (const p of patterns) { const m = url.match(p); if(m) return m[1]; }
+  return null;
+}
+
+async function loadFromUrl() {
+  const url = document.getElementById('videoUrl').value.trim();
+  if (!url) { setStatus('urlStatus','err','❌ أدخل رابطاً'); return; }
+  const vid = extractVideoId(url);
+  if (!vid) { setStatus('urlStatus','err','❌ رابط غير صحيح'); return; }
+  setStatus('urlStatus','info','⏳ جاري تحميل معلومات المقطع...');
+  try {
+    const r = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}&key=${_c}`);
+    const d = await r.json();
+    if (!d.items?.length) { setStatus('urlStatus','err','❌ لم يتم العثور على المقطع'); return; }
+    const item = d.items[0];
+    const thumb = item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || '';
+    selectVideo(vid, thumb, item.snippet.title);
+    setStatus('urlStatus','ok','✅ تم تحديد المقطع!');
+  } catch(e) { setStatus('urlStatus','err','❌ خطأ: '+e.message); }
+}
+
+async function selectVideo(id, thumb, title) {
+  selectedVideoId = id;
+  document.querySelectorAll('.video-card').forEach(c => c.classList.remove('selected'));
+  event?.target?.closest('.video-card')?.classList.add('selected');
+  document.getElementById('selThumb').src = thumb;
+  document.getElementById('selTitle').textContent = title;
+  document.getElementById('selId').textContent = 'ID: ' + id;
+  document.getElementById('selectedVideoInfo').style.display = 'block';
+  document.getElementById('fetchBtn').disabled = false;
+
+  liveChatId = null;
+  document.getElementById('liveBtn').disabled = true;
+  try {
+    const r = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${id}&key=${_c}`);
+    const d = await r.json();
+    if (d.items?.[0]?.liveStreamingDetails?.activeLiveChatId) {
+      liveChatId = d.items[0].liveStreamingDetails.activeLiveChatId;
+      document.getElementById('liveBtn').disabled = false;
+    }
+  } catch(e) {}
+}
+
+async function fetchComments() { /* نفس الكود السابق بالكامل */ 
+  if (!selectedVideoId) return;
+  setStatus('fetchStatus','info','⏳ جاري جلب التعليقات...');
+  const filterDup = document.getElementById('filterDup').checked;
+  const filterReply = document.getElementById('filterReply').checked;
+  const filterWord = document.getElementById('filterWord').value.trim().toLowerCase();
+  try {
+    let all = [], tok = '';
+    do {
+      const url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${selectedVideoId}&maxResults=100&key=${_c}`+(tok?`&pageToken=${tok}`:'');
+      const r = await fetch(url);
+      const d = await r.json();
+      if (d.error) throw new Error(d.error.message);
+      (d.items||[]).forEach(item => {
+        const top = item.snippet.topLevelComment.snippet;
+        all.push({ name: top.authorDisplayName, text: top.textDisplay, isReply: false, channelId: top.authorChannelId });
+        if (!filterReply && item.replies?.comments) {
+          item.replies.comments.forEach(rep => {
+            all.push({ name: rep.snippet.authorDisplayName, text: rep.snippet.textDisplay, isReply: true, channelId: rep.snippet.authorChannelId });
+          });
+        }
+      });
+      tok = d.nextPageToken || '';
+    } while (tok && all.length < 500);
+
+    let filtered = all;
+    if (filterReply) filtered = filtered.filter(c => !c.isReply);
+    if (filterWord) filtered = filtered.filter(c => c.text.toLowerCase().includes(filterWord));
+    if (filterDup) {
+      const seen = new Set();
+      filtered = filtered.filter(c => { if(seen.has(c.channelId)) return false; seen.add(c.channelId); return true; });
+    }
+    participants = filtered.map(c => ({name: c.name, channelId: c.channelId}));
+    renderComments();
+    setStatus('fetchStatus','ok',`✅ ${participants.length} مشارك بعد التصفية`);
+  } catch(e) { setStatus('fetchStatus','err','❌ خطأ: '+e.message); }
+}
+
+async function fetchLiveChat() { /* نفس الكود السابق */ 
+  if (!liveChatId) return;
+  setStatus('fetchStatus','info','⏳ جاري جلب رسائل البث...');
+  try {
+    let all = [], tok = '', page = 0;
+    do {
+      const url = `https://www.googleapis.com/youtube/v3/liveChatMessages?part=snippet&liveChatId=${liveChatId}&maxResults=200&key=${_c}` + (tok ? `&pageToken=${tok}` : '');
+      const r = await fetch(url);
+      const d = await r.json();
+      if (d.error) throw new Error(d.error.message);
+      (d.items||[]).forEach(item => {
+        const s = item.snippet;
+        if (s.authorChannelId) all.push({ name: s.authorDisplayName, channelId: s.authorChannelId });
+      });
+      tok = d.nextPageToken || '';
+      page++;
+    } while (tok && page < 5 && all.length < 800);
+
+    const seen = new Set();
+    const unique = all.filter(c => {
+      if (seen.has(c.channelId)) return false;
+      seen.add(c.channelId);
+      return true;
+    });
+    participants = unique.map(c => ({name: c.name, channelId: c.channelId}));
+    renderComments();
+    setStatus('fetchStatus','ok',`✅ ${participants.length} مشارك من شات البث`);
+  } catch(e) {
+    setStatus('fetchStatus','err','❌ خطأ: '+e.message);
+  }
+}
+
+function renderComments() {
+  document.getElementById('partCount').textContent = participants.length + ' مشارك';
+  const ul = document.getElementById('partList');
+  if (!participants.length) { 
+    ul.innerHTML = '<div style="color:rgba(100,60,20,0.5);text-align:center;font-size:13px;padding:10px">لا يوجد مشاركون</div>'; 
+    return; 
+  }
+  ul.innerHTML = participants.map((p,i) => `
+    <div class="pitem">
+      <span class="pitem-num">${i+1}</span>
+      <span style="flex:1;padding:0 8px">${p.name}</span>
+      <span class="pitem-del" onclick="removeParticipant(${i})">✕</span>
+    </div>`).join('');
+}
+
+function removeParticipant(i) { participants.splice(i,1); renderComments(); }
+function clearComments() { participants=[]; renderComments(); }
+function addFromComments() {
+  if (!participants.length) { alert('جلب التعليقات أولاً!'); return; }
+  const before = wheelEntries.length;
+  participants.forEach(p => { 
+    if(!wheelEntries.some(e => e.name === p.name)) wheelEntries.push({name: p.name, channelId: p.channelId}); 
+  });
+  renderWheelNames();
+  drawWheel();
+  alert(`✅ تمت إضافة ${wheelEntries.length - before} اسم`);
+}
+
+// ====== WHEEL NAMES ======
+function addWheelName() {
+  const inp = document.getElementById('nameInput');
+  const name = inp.value.trim();
+  if (!name) return;
+  if (wheelEntries.some(e => e.name === name)) { alert('الاسم موجود!'); return; }
+  wheelEntries.push({name, channelId: null});
+  inp.value = '';
+  renderWheelNames();
+  drawWheel();
+}
+function removeWheelName(i) { wheelEntries.splice(i,1); renderWheelNames(); drawWheel(); }
+function clearWheelNames() { wheelEntries=[]; renderWheelNames(); drawWheel(); }
+function renderWheelNames() {
+  const wrap = document.getElementById('wheelNamesPreview');
+  if (!wheelEntries.length) {
+    wrap.innerHTML = '<div style="color:rgba(100,60,20,0.5);text-align:center;font-size:13px;padding:8px">لا يوجد أسماء بعد</div>';
+    return;
+  }
+  wrap.innerHTML = wheelEntries.map((e,i) => `
+    <span class="wname-chip">${e.name}<span class="wname-del" onclick="removeWheelName(${i})">✕</span></span>
+  `).join('');
+}
+
+// ====== MULTIPLE WINNERS ======
+function drawMultipleWinners() {
+  const num = parseInt(document.getElementById('numWinnersInput').value) || 1;
+  if (wheelEntries.length < num) { alert('عدد الأسماء أقل من الفائزين!'); return; }
+  let shuffled = [...wheelEntries].sort(() => Math.random() - 0.5);
+  let winners = shuffled.slice(0, num);
+  winners.forEach(w => {
+    const idx = wheelEntries.findIndex(e => e.name === w.name);
+    if (idx > -1) wheelEntries.splice(idx, 1);
+  });
+  renderWheelNames();
+  drawWheel();
+
+  // إضافة إلى السجل
+  const time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'});
+  winners.forEach(w => winnersHistory.unshift({name: w.name, time, type: 'متعدد'}));
+  renderHistory();
+
+  let listHTML = winners.map(w => 
+    `<div style="margin:8px 0;font-size:22px;cursor:pointer;color:var(--hay-gold)" onclick="window.open('https://www.youtube.com/@Salam.Games04','_blank')">${w.name}</div>`
+  ).join('');
+  document.getElementById('winnerNameDisplay').innerHTML = `<div style="font-size:18px;margin-bottom:12px">الفائزون (${num}):</div>${listHTML}`;
+  document.getElementById('winnerPopup').classList.add('show');
+  launchConfetti();
+}
+
+// ====== IMPROVED WHEEL DRAW (كما في النسخة السابقة) ======
+const WHEEL_COLORS = ['#E74C3C','#E67E22','#F1C40F','#2ECC71','#1ABC9C','#3498DB','#9B59B6','#E91E63','#00BCD4','#8BC34A','#FF5722','#607D8B','#795548','#009688','#673AB7'];
+
+function drawWheel(angle = spinAngle) {
+  const cv = document.getElementById('wheel-canvas');
+  const ctx = cv.getContext('2d');
+  const cx = 170, cy = 170, r = 160;
+  ctx.clearRect(0, 0, 340, 340);
+  const n = wheelEntries.length;
+  const a = angle;
+
+  if (n === 0) {
+    const grad = ctx.createRadialGradient(cx,cy,10,cx,cy,r);
+    grad.addColorStop(0,'#C8813A'); grad.addColorStop(1,'#6B3A1F');
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle = grad; ctx.fill();
+    ctx.font = 'bold 16px Cairo';
+    ctx.fillStyle = 'rgba(255,248,231,0.85)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('أضف أسماء للعجلة', cx, cy);
+    drawCenter(ctx, cx, cy);
+    return;
+  }
+
+  const step = (Math.PI * 2) / n;
+  for (let i = 0; i < n; i++) {
+    const s = a + i * step;
+    const e = s + step;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, s, e); ctx.closePath();
+    ctx.fillStyle = WHEEL_COLORS[i % WHEEL_COLORS.length]; ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r - 6, s + 0.02, e - 0.02);
+    ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 4; ctx.stroke();
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(s + step / 2);
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    const fs = Math.min(16, Math.max(10, 210 / n));
+    const label = wheelEntries[i].name.length > 14 ? wheelEntries[i].name.substring(0, 12) + '…' : wheelEntries[i].name;
+    ctx.font = `900 ${fs}px Cairo`;
+    ctx.lineWidth = 4; ctx.strokeStyle = '#3D1F0A'; ctx.shadowBlur = 3; ctx.shadowColor = '#3D1F0A';
+    ctx.strokeText(label, r - 14, 0);
+    ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(255,255,255,0.9)'; ctx.fillStyle = '#fff';
+    ctx.fillText(label, r - 14, 0);
+    ctx.restore();
+  }
+
+  ctx.save();
+  ctx.shadowBlur = 12; ctx.shadowColor = '#FFD700';
+  ctx.lineWidth = 14; ctx.strokeStyle = '#3D1F0A';
+  ctx.beginPath(); ctx.arc(cx, cy, r + 8, 0, Math.PI * 2); ctx.stroke();
+  ctx.shadowBlur = 0; ctx.lineWidth = 3; ctx.strokeStyle = '#FFF8E7';
+  for (let i = 0; i < n; i++) {
+    const ang = a + i * step;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(ang) * (r + 4), cy + Math.sin(ang) * (r + 4));
+    ctx.lineTo(cx + Math.cos(ang) * (r + 18), cy + Math.sin(ang) * (r + 18));
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  drawCenter(ctx, cx, cy);
+}
+
+function drawCenter(ctx, cx, cy) {
+  ctx.beginPath(); ctx.arc(cx, cy, 34, 0, Math.PI * 2);
+  const cg = ctx.createRadialGradient(cx-6, cy-6, 4, cx, cy, 34);
+  cg.addColorStop(0, '#FFE040'); cg.addColorStop(0.5, '#F5B800'); cg.addColorStop(1, '#8B5520');
+  ctx.fillStyle = cg; ctx.fill();
+  ctx.strokeStyle = '#3D1F0A'; ctx.lineWidth = 6; ctx.stroke();
+
+  const time = Date.now();
+  const bobY = Math.sin(time / 380) * 7;
+  const pulse = 0.92 + Math.sin(time / 520) * 0.11;
+  const slowRotate = (time / 2800) % (Math.PI * 2);
+
+  ctx.save();
+  ctx.translate(cx, cy + bobY);
+  ctx.rotate(slowRotate);
+  ctx.scale(pulse, pulse);
+  ctx.shadowBlur = 22; ctx.shadowColor = '#FFD700';
+  if (logoImg.complete) {
+    ctx.drawImage(logoImg, -29, -29, 58, 58);
+  } else {
+    ctx.font = 'bold 32px sans-serif';
+    ctx.fillStyle = '#3D1F0A';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('🌾', 0, 2);
+  }
+  ctx.restore();
+}
+
+// ====== SPIN (كما هي) ======
+function spinWheel() { /* نفس الكود المحسن السابق بالكامل */ 
+  if (spinning || wheelEntries.length < 2) {
+    if (wheelEntries.length < 2) alert('أضف اسمين على الأقل!');
+    return;
+  }
+  spinning = true;
+  document.getElementById('winnerPopup').classList.remove('show');
+  document.getElementById('wheelPointer').classList.add('spinning');
+  const duration = 5200 + Math.random() * 1800;
+  const rotations = 11 + Math.floor(Math.random() * 6);
+  const extra = Math.PI * 2 * rotations + Math.random() * Math.PI * 2;
+  const startAngle = spinAngle;
+  const start = performance.now();
+
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 5.5);
+    spinAngle = startAngle + extra * ease;
+    drawWheel();
+    if (t < 1) {
+      requestAnimationFrame(step);
+    } else {
+      spinning = false;
+      document.getElementById('wheelPointer').classList.remove('spinning');
+      const n = wheelEntries.length;
+      const segStep = (Math.PI * 2) / n;
+      const norm = ((spinAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+      const idx = ((n - 1 - Math.floor(norm / segStep)) % n + n) % n;
+      const idealAngle = spinAngle - (norm % segStep) + segStep / 2;
+
+      let settleStart = performance.now();
+      function settle(now2) {
+        const t2 = Math.min((now2 - settleStart) / 720, 1);
+        const bounce = Math.sin(t2 * Math.PI * 4) * (1 - t2) * 0.09 * segStep;
+        spinAngle = idealAngle + bounce;
+        drawWheel();
+        if (t2 < 1) requestAnimationFrame(settle);
+        else {
+          spinAngle = idealAngle;
+          drawWheel();
+          showWinner(wheelEntries[idx]);
+        }
+      }
+      requestAnimationFrame(settle);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+// ====== WINNER + HISTORY ======
+function showWinner(entry) {
+  currentWinner = entry;
+  const display = document.getElementById('winnerNameDisplay');
+  display.innerHTML = entry.name;
+  document.getElementById('winnerPopup').classList.add('show');
+  launchConfetti();
+
+  // إضافة إلى السجل
+  const time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'});
+  winnersHistory.unshift({name: entry.name, time, type: 'عجلة'});
+  if (winnersHistory.length > 20) winnersHistory.pop();
+  renderHistory();
+}
+
+function visitWinnerProfile() {
+  // تم التعديل حسب طلبك: يفتح صفحة القناة العامة (الصفحة الرئيسية) وليس قناة الفائز
+  window.open('https://www.youtube.com/@Salam.Games04', '_blank');
+}
+
+function launchConfetti() { /* نفس الكود */ 
+  const colors = ['#FFD700','#FF5722','#4CAF50','#2196F3','#E91E63','#FF9800','#9C27B0'];
+  for (let i=0; i<80; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random()*100+'vw';
+    piece.style.top = '-20px';
+    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+    piece.style.transform = `rotate(${Math.random()*360}deg)`;
+    piece.style.animationDelay = Math.random()*1.5+'s';
+    piece.style.animationDuration = (2.5+Math.random()*2)+'s';
+    piece.style.width = (8+Math.random()*12)+'px';
+    piece.style.height = (8+Math.random()*12)+'px';
+    piece.style.borderRadius = Math.random()>0.5?'50%':'2px';
+    document.body.appendChild(piece);
+    setTimeout(()=>piece.remove(), 5000);
+  }
+}
+
+function removeWinnerAndClose() {
+  if (currentWinner) {
+    const idx = wheelEntries.findIndex(e => e.name === currentWinner.name);
+    if (idx > -1) wheelEntries.splice(idx, 1);
+    renderWheelNames(); drawWheel();
+  }
+  closeWinner();
+}
+function closeWinner() { 
+  document.getElementById('winnerPopup').classList.remove('show'); 
+  currentWinner = null; 
+}
+function spinAgain() { closeWinner(); setTimeout(spinWheel,400); }
+
+// ====== سجل الفائزين ======
+function renderHistory() {
+  const container = document.getElementById('historyList');
+  if (!winnersHistory.length) {
+    container.innerHTML = '<div style="color:rgba(100,60,20,0.5);text-align:center;padding:20px;font-size:13px">لم يتم تسجيل أي فائز بعد</div>';
+    return;
+  }
+  container.innerHTML = winnersHistory.map(h => `
+    <div class="history-item">
+      <span>${h.name}</span>
+      <span style="color:var(--wood-med);font-size:12px">${h.time} <small>(${h.type})</small></span>
+    </div>
+  `).join('');
+}
+function clearHistory() {
+  if (confirm('مسح سجل الفائزين بالكامل؟')) {
+    winnersHistory = [];
+    renderHistory();
+  }
+}
+
+// ====== INITIAL DRAW ======
+drawWheel();
+</script>
+</body>
+</html>
