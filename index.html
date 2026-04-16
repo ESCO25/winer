@@ -126,14 +126,14 @@ header{position:relative;z-index:10;display:flex;flex-direction:column;align-ite
 .nav-btn:active{box-shadow:0 2px 0 #2A5A08;}
 
 /* ====== MAIN WRAP ====== */
-.main-wrap{position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:16px 14px 160px;}
+.main-wrap{position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:18px 18px 160px;}
 
 /* ====== WHEEL LAYOUT: side by side ====== */
-.wheel-layout{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start;}
-@media(max-width:860px){.wheel-layout{grid-template-columns:1fr;}}
+.wheel-layout{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start;}
+@media(max-width:960px){.wheel-layout{grid-template-columns:1fr;}}
 
-.yt-wrap{position:relative;z-index:10;max-width:1220px;margin:0 auto;padding:16px 14px 160px;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-@media(max-width:900px){.yt-wrap{grid-template-columns:1fr}}
+.yt-wrap{position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:18px 18px 160px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:900px){.yt-wrap{grid-template-columns:1fr;padding:12px 10px 140px;}}
 
 /* ====== WOOD CARD ====== */
 .wood-card{background:linear-gradient(180deg,#D4943A 0%,#B87830 50%,#A06420 100%);border:5px solid var(--wood-dark);border-radius:20px;padding:0;overflow:hidden;box-shadow:0 10px 0 var(--wood-dark),0 14px 25px rgba(0,0,0,0.4);position:relative;}
@@ -174,9 +174,9 @@ header{position:relative;z-index:10;display:flex;flex-direction:column;align-ite
 .name-add-row{display:flex;gap:8px;margin-bottom:8px;}
 
 /* ====== WHEEL ====== */
-.wheel-pointer{position:absolute;left:50%;top:50%;transform:translate(196px,-50%);width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-right:44px solid var(--hay-gold);filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.6)) drop-shadow(0 0 8px rgba(255,215,0,0.8));z-index:5;transition:transform .08s cubic-bezier(0.68,-0.55,0.27,1.55);}
+.wheel-pointer{position:absolute;left:50%;top:50%;transform:translate(211px,-50%);width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-right:44px solid var(--hay-gold);filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.6)) drop-shadow(0 0 8px rgba(255,215,0,0.8));z-index:5;transition:transform .08s cubic-bezier(0.68,-0.55,0.27,1.55);}
 .wheel-pointer.spinning{animation:pointerWobble 90ms linear infinite;}
-@keyframes pointerWobble{0%,100%{transform:translate(196px,-50%) rotate(0deg)}25%{transform:translate(196px,-50%) rotate(12deg)}75%{transform:translate(196px,-50%) rotate(-12deg)}}
+@keyframes pointerWobble{0%,100%{transform:translate(211px,-50%) rotate(0deg)}25%{transform:translate(211px,-50%) rotate(12deg)}75%{transform:translate(211px,-50%) rotate(-12deg)}}
 canvas#wheel-canvas{border-radius:50%;border:14px solid var(--wood-dark);box-shadow:0 0 0 8px var(--wood-light),0 0 0 14px var(--wood-dark),0 0 0 20px rgba(255,215,0,0.3),0 20px 50px rgba(0,0,0,0.6);cursor:pointer;display:block;}
 .wheel-outer{display:flex;justify-content:center;align-items:center;position:relative;padding:20px;}
 .wheel-section{display:flex;flex-direction:column;gap:16px;}
@@ -254,19 +254,19 @@ canvas#wheel-canvas{border-radius:50%;border:14px solid var(--wood-dark);box-sha
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
 /* ====== LIVE PAGE ====== */
-.live-wrap{position:relative;z-index:10;max-width:900px;margin:0 auto;padding:16px 14px 160px;}
+.live-wrap{position:relative;z-index:10;max-width:980px;margin:0 auto;padding:18px 18px 160px;}
 
 /* ====== RESPONSIVE ====== */
 @media(max-width:600px){
   .nav-btn{padding:9px 14px;font-size:12px;}
-  .wheel-outer canvas{width:280px!important;height:280px!important;}
+  .wheel-outer canvas{width:300px!important;height:300px!important;}
   .winner-card{padding:20px 24px;}
   .yt-wrap{padding:10px 8px 140px;}
   .main-wrap{padding:10px 8px 140px;}
   .header-sign{padding:12px 20px;}
 }
 @media(max-width:400px){
-  .wheel-outer canvas{width:240px!important;height:240px!important;}
+  .wheel-outer canvas{width:260px!important;height:260px!important;}
   .winner-card{padding:16px 14px;}
 }
 </style>
@@ -388,7 +388,7 @@ canvas#wheel-canvas{border-radius:50%;border:14px solid var(--wood-dark);box-sha
             <canvas id="wheel-canvas" width="380" height="380" onclick="spinWheel()"></canvas>
             <div class="wheel-pointer" id="wheelPointer"></div>
           </div>
-          <button class="btn btn-gold" onclick="spinWheel()" id="spinBtn" style="max-width:380px;">🎰 دوّر العجلة!</button>
+          <button class="btn btn-gold" onclick="spinWheel()" id="spinBtn" style="max-width:420px;">🎰 دوّر العجلة!</button>
         </div>
 
       </div>
@@ -649,6 +649,7 @@ function showPage(name) {
   document.getElementById('navYT').classList.toggle('current', name === 'youtube');
   document.getElementById('navLive').classList.toggle('current', name === 'live');
   if(name === 'wheel') drawWheel();
+  if(name === 'live') autoLoadActiveLiveStream();
 }
 
 // ====== TABS & STATUS ======
@@ -902,39 +903,83 @@ function renderExcluded() {
 function removeExcluded(i) { excludedFromDraw.splice(i,1); renderExcluded(); }
 function clearExcluded() { excludedFromDraw=[]; renderExcluded(); }
 
-// ====== DRAW FROM COMMENTS (YT page) ======
+// ====== DRAW FROM COMMENTS (YT page) — via wheel ======
 function drawFromComments() {
   const num = parseInt(document.getElementById('ytNumWinners').value) || 1;
   if(!participants.length){ alert('جلب التعليقات أولاً!'); return; }
   if(participants.length < num){ alert('عدد المشاركين أقل من عدد الفائزين!'); return; }
+
+  // Shuffle and pick candidates, load them into the wheel, then spin
   let shuffled = [...participants].sort(() => Math.random() - 0.5);
-  let winners = shuffled.slice(0, num);
-
-  const time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'});
-  winners.forEach(w => winnersHistory.unshift({name: w.name, time, type: 'يوتيوب', channelId: w.channelId}));
-  if(winnersHistory.length > 20) winnersHistory.length = 20;
-  renderHistory();
-
+  // For single winner: put all participants in wheel and spin
+  // For multiple: put candidates in wheel and do multi-spin
   if(num === 1) {
-    currentWinner = winners[0];
-    const display = document.getElementById('winnerNameDisplay');
-    display.innerHTML = winners[0].name;
-    const hint = document.getElementById('winnerVisitHint');
-    if(winners[0].channelId) { hint.style.display = 'block'; hint.textContent = 'اضغط على الاسم لزيارة القناة'; } else { hint.style.display = 'none'; }
-    document.getElementById('winnerPopup').classList.add('show');
-    launchConfetti();
+    // Load participants into wheel and navigate to wheel page then spin
+    wheelEntries = shuffled.map(p => ({name: p.name, channelId: p.channelId}));
+    renderWheelNames();
+    showPage('wheel');
+    setTimeout(() => { drawWheel(); setTimeout(spinWheel, 600); }, 300);
   } else {
-    currentWinner = winners[0];
-    let listHTML = winners.map(w =>
-      `<div style="margin:8px 0;font-size:20px;cursor:pointer;color:var(--hay-gold);text-decoration:underline" onclick="openChannelById('${w.channelId||''}')">${w.name}</div>`
-    ).join('');
-    document.getElementById('winnerNameDisplay').innerHTML = `<div style="font-size:17px;margin-bottom:10px">الفائزون (${num}):</div>${listHTML}`;
-    document.getElementById('winnerVisitHint').style.display = 'block';
-    document.getElementById('winnerVisitHint').textContent = 'اضغط على أي اسم لزيارة قناته';
-    document.getElementById('winnerPopup').classList.add('show');
-    launchConfetti();
+    // Multiple winners: pick via wheel sequentially - load all into wheel
+    wheelEntries = shuffled.map(p => ({name: p.name, channelId: p.channelId}));
+    renderWheelNames();
+    showPage('wheel');
+    ytPendingWinners = num;
+    ytWinnersCollected = [];
+    setTimeout(() => { drawWheel(); setTimeout(spinNextYTWinner, 600); }, 300);
   }
 }
+
+let ytPendingWinners = 0;
+let ytWinnersCollected = [];
+
+function spinNextYTWinner() {
+  if(ytPendingWinners <= 0) return;
+  spinWheel();
+}
+
+// Hook into showWinner to handle sequential YT multi-winner mode
+const _origShowWinner = showWinner;
+showWinner = function(entry) {
+  if(ytPendingWinners > 0) {
+    ytWinnersCollected.push(entry);
+    ytPendingWinners--;
+    // Remove from wheel
+    const idx = wheelEntries.findIndex(e => e.name === entry.name);
+    if(idx > -1) wheelEntries.splice(idx, 1);
+    renderWheelNames(); drawWheel();
+    const time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'});
+    winnersHistory.unshift({name: entry.name, time, type: 'يوتيوب', channelId: entry.channelId});
+    if(winnersHistory.length > 20) winnersHistory.length = 20;
+    renderHistory();
+    if(ytPendingWinners > 0) {
+      // Show partial result then spin again
+      currentWinner = entry;
+      document.getElementById('winnerNameDisplay').innerHTML = entry.name;
+      const hint = document.getElementById('winnerVisitHint');
+      if(entry.channelId){ hint.style.display='block'; hint.textContent='اضغط على الاسم لزيارة القناة'; } else { hint.style.display='none'; }
+      document.getElementById('winnerPopup').classList.add('show');
+      launchConfetti();
+      // Auto-close after 2.5s and spin again
+      setTimeout(() => { closeWinner(); setTimeout(spinNextYTWinner, 600); }, 2500);
+    } else {
+      // All done - show final list
+      const total = ytWinnersCollected;
+      currentWinner = total[0];
+      let listHTML = total.map(w =>
+        `<div style="margin:8px 0;font-size:20px;cursor:pointer;color:var(--hay-gold);text-decoration:underline" onclick="openChannelById('${w.channelId||''}')">${w.name}</div>`
+      ).join('');
+      document.getElementById('winnerNameDisplay').innerHTML = `<div style="font-size:17px;margin-bottom:10px">الفائزون (${total.length}):</div>${listHTML}`;
+      document.getElementById('winnerVisitHint').style.display = 'block';
+      document.getElementById('winnerVisitHint').textContent = 'اضغط على أي اسم لزيارة قناته';
+      document.getElementById('winnerPopup').classList.add('show');
+      launchConfetti();
+      ytWinnersCollected = [];
+    }
+    return;
+  }
+  _origShowWinner(entry);
+};
 
 // ====== LIVE STREAM PAGE ======
 async function loadLiveStream() {
@@ -957,6 +1002,31 @@ async function loadLiveStream() {
     setStatus('liveStatus','ok','✅ تم الاتصال بالبث المباشر!');
     await fetchLiveChatMessages();
   } catch(e){ setStatus('liveStatus','err','❌ خطأ: '+e.message); }
+}
+
+// ====== AUTO LOAD ACTIVE LIVE STREAM FROM CHANNEL ======
+async function autoLoadActiveLiveStream() {
+  // Only auto-load if no stream is already connected
+  if(currentLiveChatId) return;
+  setStatus('liveStatus','info','⏳ جاري البحث عن بث مباشر نشط على القناة...');
+  try {
+    // Get channel uploads playlist
+    const r1 = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${_h}&key=${_c}`);
+    const d1 = await r1.json();
+    if(!d1.items?.length) { setStatus('liveStatus','info','ℹ️ أدخل رابط البث المباشر يدوياً'); return; }
+    const channelId = d1.items[0].id;
+    // Search for active live streams on this channel
+    const r2 = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${_c}`);
+    const d2 = await r2.json();
+    if(!d2.items?.length) { setStatus('liveStatus','info','ℹ️ لا يوجد بث مباشر نشط حالياً — أدخل الرابط يدوياً'); return; }
+    const liveVid = d2.items[0];
+    const vid = liveVid.id.videoId;
+    // Fill the input and load
+    document.getElementById('liveUrl').value = `https://www.youtube.com/watch?v=${vid}`;
+    await loadLiveStream();
+  } catch(e) {
+    setStatus('liveStatus','info','ℹ️ أدخل رابط البث المباشر يدوياً');
+  }
 }
 
 async function fetchLiveChatMessages() {
@@ -1013,27 +1083,22 @@ function drawFromLive() {
   if(!liveParticipants.length){ alert('جلب رسائل البث أولاً!'); return; }
   if(liveParticipants.length < num){ alert('عدد المشاركين أقل من عدد الفائزين!'); return; }
   let shuffled = [...liveParticipants].sort(() => Math.random() - 0.5);
-  let winners = shuffled.slice(0, num);
 
-  const time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'});
-  winners.forEach(w => winnersHistory.unshift({name: w.name, time, type: 'بث مباشر', channelId: w.channelId}));
-  if(winnersHistory.length > 20) winnersHistory.length = 20;
-  renderHistory();
-
-  currentWinner = winners[0];
+  // Load into wheel and spin — same approach as YT draw
+  wheelEntries = shuffled.map(p => ({name: p.name, channelId: p.channelId}));
+  renderWheelNames();
+  showPage('wheel');
   if(num === 1) {
-    document.getElementById('winnerNameDisplay').innerHTML = winners[0].name;
-    const hint = document.getElementById('winnerVisitHint');
-    if(winners[0].channelId){ hint.style.display='block'; hint.textContent='اضغط على الاسم لزيارة القناة'; } else { hint.style.display='none'; }
+    setTimeout(() => { drawWheel(); setTimeout(spinWheel, 600); }, 300);
   } else {
-    let listHTML = winners.map(w => `<div style="margin:8px 0;font-size:20px;cursor:pointer;color:var(--hay-gold);text-decoration:underline" onclick="openChannelById('${w.channelId||''}')">${w.name}</div>`).join('');
-    document.getElementById('winnerNameDisplay').innerHTML = `<div style="font-size:17px;margin-bottom:10px">الفائزون (${num}):</div>${listHTML}`;
-    document.getElementById('winnerVisitHint').style.display='block';
-    document.getElementById('winnerVisitHint').textContent='اضغط على أي اسم لزيارة قناته';
+    ytPendingWinners = num;
+    ytWinnersCollected = [];
+    // override type label for history
+    _liveDrawMode = true;
+    setTimeout(() => { drawWheel(); setTimeout(spinNextYTWinner, 600); }, 300);
   }
-  document.getElementById('winnerPopup').classList.add('show');
-  launchConfetti();
 }
+let _liveDrawMode = false;
 
 // ====== WHEEL NAMES ======
 function addWheelName() {
@@ -1101,8 +1166,8 @@ function drawWheel(angle = spinAngle) {
   if(!cv) return;
   // Make canvas responsive
   const container = cv.parentElement;
-  const maxSize = Math.min(container.offsetWidth - 40, 380);
-  const size = Math.max(240, maxSize);
+  const maxSize = Math.min(container.offsetWidth - 40, 420);
+  const size = Math.max(260, maxSize);
   cv.style.width = size + 'px';
   cv.style.height = size + 'px';
   
