@@ -441,6 +441,17 @@ img,canvas,svg{max-width:100%;}
         <div class="card-body">
 
           <div class="parchment">
+            <label class="field-label">🔑 Facebook Access Token:</label>
+            <div style="display:flex;gap:8px">
+              <input type="password" class="hay-input" id="fbTokenInput" placeholder="أدخل توكن جديد هنا..." style="font-size:12px;direction:ltr">
+              <button class="btn btn-blue" onclick="saveFbToken()">حفظ</button>
+            </div>
+            <div id="fbTokenStatus" style="font-size:11px;margin-top:5px;font-weight:700;color:var(--wood-med)">
+              💡 احصل على توكن جديد من: <a href="https://developers.facebook.com/tools/explorer/" target="_blank" style="color:var(--grass-dark)">Graph API Explorer</a>
+            </div>
+          </div>
+
+          <div class="parchment">
             <label class="field-label">🔗 رابط المنشور:</label>
             <div style="display:flex;gap:8px">
               <input type="text" class="hay-input" id="fbPostUrl" placeholder="https://www.facebook.com/..." oninput="parseFbPostId()">
@@ -1064,7 +1075,16 @@ function spinWheel() {
 // ====== FACEBOOK PAGE ======
 let fbParticipants = [];
 let fbWinnersHistory = [];
-const _fb = 'EAAS1ROh6SzgBRrEnjlGuRgEk2AZBStxhXu3VBpyFl6ZBPOzt6xzxSiYADAu4jRQ2ZAail9mLHVsIk4pikE2DaHeYU43YW1gGGQr3tqlaAMDYZClGbu0qZCdZBewyZBbq9SVHqF0hQoN9LM1c7RL0eHqnEHyKB8416riTKADDmXiRnHov3AvQsJI2Gp6LJUBODBZBYA85tpJlc6nJfRRGvFTaKTBDauoqmdk2CMrE';
+let _fbToken = 'EAAS1ROh6SzgBRidKPiLOwrCaPRecET9zhYPGw0ZBmkuZAsfyj4AVeEcYN0i85XBdIUUBqlLR4oEjS8AZCQlVm8y6q1ZACQMdDm59nktBVfnnAX7msr6cpVZCCySSlhbLZAGQsjAFjicF9AKifhYgZBvbWiWE6qZAOr5oHeRyP4gKn4qiNPRbHAMo5WrM1Ym5zqt2GJZCzCnL3htJxyXLbbBU47Xyq3uiP0hrCzcNq9ptdMeoFCVtOzO3GfX9GZBl55v2Far5jbWrIvlMDxYpoZD';
+
+function saveFbToken() {
+  const val = document.getElementById('fbTokenInput').value.trim();
+  if (!val) { alert('أدخل التوكن أولاً'); return; }
+  _fbToken = val;
+  document.getElementById('fbTokenStatus').innerHTML = '✅ تم حفظ التوكن بنجاح';
+  document.getElementById('fbTokenStatus').style.color = 'var(--grass-dark)';
+  document.getElementById('fbTokenInput').value = '';
+}
 
 function parseFbPostId() {
   const url = document.getElementById('fbPostUrl').value.trim();
@@ -1085,19 +1105,34 @@ function parseFbPostId() {
 }
 
 function extractFbPostId(url) {
-  // Matches /posts/123, /videos/123, pfbid patterns, ?story_fbid=123
-  const patterns = [
-    /\/posts\/(\d+)/,
-    /\/videos\/(\d+)/,
-    /\/photo\/\?fbid=(\d+)/,
-    /[?&]story_fbid=(\d+)/,
-    /\/(\d{10,})(?:[/?]|$)/,
-    /pfbid([A-Za-z0-9]+)/
-  ];
-  for (const p of patterns) {
-    const m = url.match(p);
-    if (m) return m[1];
-  }
+  // For group posts: /groups/GROUP_ID/permalink/POST_ID → return POST_ID
+  const groupPermalink = url.match(/\/groups\/\d+\/permalink\/(\d+)/);
+  if (groupPermalink) return groupPermalink[1];
+
+  // /posts/123
+  const posts = url.match(/\/posts\/(\d+)/);
+  if (posts) return posts[1];
+
+  // /videos/123
+  const videos = url.match(/\/videos\/(\d+)/);
+  if (videos) return videos[1];
+
+  // ?story_fbid=123
+  const story = url.match(/[?&]story_fbid=(\d+)/);
+  if (story) return story[1];
+
+  // /photo/?fbid=123
+  const photo = url.match(/fbid=(\d+)/);
+  if (photo) return photo[1];
+
+  // pfbid (encoded permalink) — extract as-is
+  const pfbid = url.match(/pfbid([A-Za-z0-9]+)/);
+  if (pfbid) return 'pfbid' + pfbid[1];
+
+  // Last numeric segment of 10+ digits (fallback)
+  const fallback = url.match(/\/(\d{10,})(?:[/?#]|$)/);
+  if (fallback) return fallback[1];
+
   return null;
 }
 
@@ -1123,7 +1158,7 @@ async function fetchFbComments() {
 
   try {
     let all = [];
-    let nextUrl = `https://graph.facebook.com/v19.0/${postId}/comments?fields=from,message,comments{from,message}&limit=100&access_token=${_fb}`;
+    let nextUrl = `https://graph.facebook.com/v19.0/${postId}/comments?fields=from,message,comments{from,message}&limit=100&access_token=${_fbToken}`;
 
     let pages = 0;
     while (nextUrl && pages < 20) {
